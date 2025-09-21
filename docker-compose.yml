@@ -18,7 +18,7 @@ services:
         condition: service_healthy
     networks:
       - sonarnet
-    restart: unless-stopped
+    restart: always
     ulimits:
       nofile:
         soft: 65536
@@ -34,7 +34,7 @@ services:
       - postgresql_data:/var/lib/postgresql/data
     networks:
       - sonarnet
-    restart: unless-stopped
+    restart: always
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 10s
@@ -55,7 +55,7 @@ services:
       - sonarqube
     networks:
       - sonarnet
-    restart: unless-stopped
+    restart: always
 
 volumes:
   sonarqube_data:

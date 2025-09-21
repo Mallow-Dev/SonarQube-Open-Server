@@ -8,5 +8,8 @@ build/
 # Node dependencies
 node_modules/
 
+# Logs
+logs/
+
 # OS-specific files
 .DS_Store
