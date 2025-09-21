@@ -1,0 +1,53 @@
+# Development overrides for docker-compose.yml
+# This file is automatically loaded by Docker Compose when present
+# Use this file for local development customizations
+
+services:
+  sonarqube:
+    # Override port for development (avoid conflicts with other instances)
+    ports:
+      - "9001:9000"
+
+    # Development-specific environment variables
+    environment:
+      - SONAR_LOG_LEVEL=DEBUG
+      - SONAR_WEB_JAVA_OPTS=-Xmx1g -Xms256m -XX:+PrintGC -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+HeapDumpOnOutOfMemoryError
+      - SONAR_CE_JAVA_OPTS=-Xmx1g -Xms256m -XX:+HeapDumpOnOutOfMemoryError
+      - SONAR_SEARCH_JAVA_OPTS=-Xms256m -Xmx512m -XX:+UseG1GC -Djava.net.preferIPv4Stack=true
+      # Uncomment to enable development mode
+      # - SONAR_WEB_DEV=true
+
+    # Mount additional volumes for development
+    volumes:
+      - ./plugins:/opt/sonarqube/extensions/plugins
+      - ./logs:/opt/sonarqube/logs
+      # Mount SSL certificates if needed
+      # - ./ssl:/opt/sonarqube/ssl
+
+    # Override restart policy for development
+    restart: "no"
+
+  db:
+    # Development database with debug logging
+    environment:
+      - POSTGRES_LOG_STATEMENT=all
+      # - POSTGRES_LOG_CONNECTION=on
+
+    # Mount database initialization scripts
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d
+
+    # Override restart policy for development
+    restart: "no"
+
+# Development-specific volumes
+volumes:
+  sonarqube_extensions:
+    driver: local
+  sonarqube_plugins:
+    driver: local
+
+# Development networks (if you need additional isolation)
+networks:
+  sonarnet:
+    driver: bridge
