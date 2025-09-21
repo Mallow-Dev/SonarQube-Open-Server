@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Memory Bank Schema",
+  "description": "Standardized schema for memory bank entries across all agents and projects",
+  "version": "2.0.0",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier (kebab-case, alphanumeric with hyphens)",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable title",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "context",
+        "decision",
+        "progress",
+        "brief",
+        "pattern",
+        "architect",
+        "troubleshoot",
+        "reference"
+      ],
+      "description": "Memory entry type"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$"
+      },
+      "description": "Tags for categorization (lowercase, kebab-case)",
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp (ISO 8601 format)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "archived", "draft"],
+      "description": "Entry status",
+      "default": "active"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"],
+      "description": "Entry priority (optional)"
+    },
+    "related": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related memory entry IDs (optional)"
+    }
+  },
+  "required": ["id", "title", "type", "tags", "updated_at"],
+  "additionalProperties": false
+}
