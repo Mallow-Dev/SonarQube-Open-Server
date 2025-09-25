@@ -4,10 +4,10 @@
 
 - Replaced mcp-server healthcheck with log-based readiness check and verified container reports healthy.
 - Ran mcp-server Gradle build to confirm no compilation or test issues.
+- Updated cspell dictionary with project-specific technical terms, reducing spelling errors from 1152 to 892 issues.
+- Committing cspell configuration changes.
 
 ## Doing
-
-- Preparing repository summary and commit for recent changes.
 
 ## Next
 
