@@ -16,3 +16,6 @@ logs/
 
 .gemini/
 gha-creds-*.json
+
+# Local backups (do not commit large backup files)
+backups/
