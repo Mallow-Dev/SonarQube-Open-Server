@@ -50,7 +50,11 @@ services:
       SONARQUBE_URL: http://sonarqube:9000
       SONARQUBE_TOKEN: ${SONARQUBE_TOKEN}
     healthcheck:
-      test: ["CMD-SHELL", "curl -fsS --max-time 3 http://localhost:8080/health || exit 1"]
+      test:
+        [
+          "CMD-SHELL",
+          "test -f /usr/src/app/storage/logs/mcp.log && grep -q 'Backend service initialized' /usr/src/app/storage/logs/mcp.log",
+        ]
       interval: 10s
       timeout: 3s
       retries: 5
