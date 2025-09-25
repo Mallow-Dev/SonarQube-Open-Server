@@ -1,11 +1,13 @@
 # Agent Active Context
 
 ## Purpose
+
 Track active agent sessions and maintain context continuity across conversations. Each agent maintains their own UUID and updates this file with their current activities.
 
 ## Schema
 
 ### Agent Entry Format
+
 ```yaml
 agent_id: UUID (e.g., claude-sonnet-4-20250918-001)
 session_start: ISO timestamp
@@ -19,6 +21,7 @@ memory_references: Links to relevant memory bank entries
 ## Active Sessions
 
 ### claude-sonnet-4-20250918-001
+
 - **Session Start**: 2025-09-18T[current_time]
 - **Last Update**: 2025-09-21T[current_time]
 - **Status**: paused
@@ -32,6 +35,7 @@ memory_references: Links to relevant memory bank entries
   - memory-bank/systemPatterns.md (for architectural patterns)
 
 ### gemini-20250921-001
+
 - **Session Start**: 2025-09-21T[current_time]
 - **Last Update**: 2025-09-21T[current_time]
 - **Status**: active
@@ -44,6 +48,7 @@ memory_references: Links to relevant memory bank entries
   - memory-bank/agentContext.md
 
 ### copilot-20250925-001
+
 - **Session Start**: 2025-09-25T02:00:00Z
 - **Last Update**: 2025-09-25T02:30:00Z
 - **Status**: completed
@@ -59,12 +64,14 @@ memory_references: Links to relevant memory bank entries
   - docker-compose.yml
 
 ## Session History
+
 - Previous session worked on v2 memory bank implementation
 - VSCode extension conflicts occurred with diagram rendering
 - User had to reload VSCode, breaking conversation context
 - Plugin removal and service restart resolved SonarQube issues
 
 ## Notes
+
 - Agents should update their entry whenever starting new tasks
 - Include references to memory bank entries being modified
 - Track decision points and architectural changes
