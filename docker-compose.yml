@@ -49,6 +49,7 @@ services:
       STORAGE_PATH: /usr/src/app/storage
       SONARQUBE_URL: http://sonarqube:9000
       SONARQUBE_TOKEN: ${SONARQUBE_TOKEN}
+    # Healthcheck waits for the MCP server to log its startup message before reporting healthy
     healthcheck:
       test:
         [
