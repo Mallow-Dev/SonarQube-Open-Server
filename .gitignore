@@ -19,3 +19,8 @@ gha-creds-*.json
 
 # Local backups (do not commit large backup files)
 backups/
+
+# Environment files
+.env
+!.env.example
+.env.*
