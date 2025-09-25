@@ -49,6 +49,11 @@ services:
       STORAGE_PATH: /usr/src/app/storage
       SONARQUBE_URL: http://sonarqube:9000
       SONARQUBE_TOKEN: ${SONARQUBE_TOKEN}
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS --max-time 3 http://localhost:8080/health || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
     volumes:
       - mcp_storage:/usr/src/app/storage
     depends_on:
