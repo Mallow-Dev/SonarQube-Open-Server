@@ -13,3 +13,6 @@ logs/
 
 # OS-specific files
 .DS_Store
+
+.gemini/
+gha-creds-*.json
