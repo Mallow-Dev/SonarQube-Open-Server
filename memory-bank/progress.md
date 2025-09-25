@@ -3,7 +3,7 @@ id: sonarqube-progress
 title: SonarQube Open Server Progress
 type: progress
 tags: ["sonarqube", "docker", "progress"]
-updated_at: "2025-09-18T09:30:00Z"
+updated_at: "2025-09-25T02:30:00Z"
 status: active
 ---
 
@@ -27,8 +27,12 @@ Working on SonarQube Open Server setup with v2 memory bank implementation. Previ
 - [x] Document agent handoff procedures - 2025-09-21
 
 ## In Progress
+- Complete memory bank updates with recent operational changes (2025-09-25)
+- Create fresh backups of SonarQube and PostgreSQL volumes before further changes
 
 ## Upcoming Tasks
+- Review Docker image tags for exact LTA (2025.1) and optionally pin to exact tag
+- Remove deprecated `version` key from `docker-compose.yml` to silence compose warning
 
 ## Milestones
 ### Phase 1: Core Setup - 2025-09-18

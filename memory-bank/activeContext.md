@@ -6,7 +6,8 @@
 - Ensure stable diagram rendering.
 - Provide examples for SonarQube analysis.
 - Document troubleshooting and agent handoff procedures.
+- Operational tasks (updated 2025-09-25): repair and validate `docker-compose.yml`, upgrade SonarQube image to `sonarqube:latest`, start the stack and verify health.
 
 ## Current Blockers
 
-- None at the moment.
+- None blocking right now; SonarQube stack is up. Recommended: create fresh backups of data volumes before making configuration or plugin changes.
