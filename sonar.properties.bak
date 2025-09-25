@@ -1,0 +1,52 @@
+# SonarQube Server Configuration
+
+# Database Configuration
+# Note: Database connection settings are configured in docker-compose.yml environment variables
+sonar.jdbc.username=sonar
+sonar.jdbc.password=sonar
+sonar.jdbc.url=jdbc:postgresql://db:5432/sonar
+
+# Web Server Configuration
+sonar.web.host=0.0.0.0
+sonar.web.port=9000
+sonar.web.context=
+
+# Elasticsearch Configuration
+sonar.search.host=127.0.0.1
+sonar.search.port=9001
+sonar.search.javaOpts=-Xms512m -Xmx512m -XX:+UseG1GC -Djava.net.preferIPv4Stack=true -XX:MaxDirectMemorySize=256m
+sonar.es.bootstrap.checks.disable=true
+
+# Logging Configuration
+sonar.log.level=INFO
+sonar.log.rollingPolicy=time:yyyy-MM-dd
+sonar.log.maxFiles=7
+
+# Analysis Configuration
+sonar.ce.javaOpts=-Xmx512m -Xms128m -XX:+HeapDumpOnOutOfMemoryError
+sonar.web.javaOpts=-Xmx512m -Xms128m -XX:+HeapDumpOnOutOfMemoryError
+
+# Security Configuration
+#sonar.security.realm=LDAP
+#sonar.authenticator.downcase=true
+
+# Quality Profile and Quality Gate (can be configured via UI after first login)
+# sonar.qualitygate.waitForQualityGate=true
+
+# Plugin Configuration
+# sonar.plugins.downloadOnlyRequired=false
+
+# Backup Configuration (recommended for production)
+# sonar.path.data=/opt/sonarqube/data
+# sonar.path.temp=/opt/sonarqube/temp
+
+# Internationalization
+sonar.web.dev=false
+sonar.web.dev.sources=false
+
+# JVM Performance Tuning
+sonar.path.home=/opt/sonarqube
+sonar.path.data=/opt/sonarqube/data
+sonar.path.temp=/opt/sonarqube/temp
+sonar.path.logs=/opt/sonarqube/logs
+sonar.path.web=/opt/sonarqube/web
